@@ -52,9 +52,9 @@ const ProfileSchema = new mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            desciption: {
+            description: {
                 type: String
-            },
+            }
         }
     ],
     education: [
@@ -67,7 +67,7 @@ const ProfileSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            fieldofstydy: {
+            fieldofstudy: {
                 type: String,
                 required: true
             },
@@ -82,9 +82,9 @@ const ProfileSchema = new mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            desciption: {
+            description: {
                 type: String
-            },
+            }
         }
     ],
     social: {
