@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types'
 
-const Register = () => {
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,34 +19,14 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
-            console.log('Passwords do not match')
+            setAlert('Passwords do not match', 'danger')
         } else {
-            // const newUser = {
-            //     name,
-            //     email,
-            //     password
-            // }
-
-            // try {
-            //     const config = {
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         }
-            //     }
-
-            //     const body = JSON.stringify(newUser);
-
-            //     const res = await axios.post('/api/users', body, config);
-            //     console.log(res.data)
-            // } catch (err) {
-            //     console.error(err.response.data);
-            // }
             console.log('Success');
         }
     }
 
     return (
-        <section className="container">
+        <React.Fragment>
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
@@ -97,8 +79,12 @@ const Register = () => {
             <p className="my-1">
                 Already have an account? <Link to="/login">Sign In</Link>
             </p>
-        </section>
-    )
-}
+        </React.Fragment>
+    );
+};
 
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired
+};
+
+export default connect(null, { setAlert })(Register);
