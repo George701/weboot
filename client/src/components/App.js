@@ -7,6 +7,8 @@ import store from '../store';
 import Navbar from './layout/Navbar';
 import Landing from './layout/Landing';
 import Alert from './layout/Alert';
+import Dashboard from './dashboard/Dashboard';
+import PrivateRoute from './routing/PrivateRoute';
 
 import Register from './auth/Register';
 import Login from './auth/Login';
@@ -36,6 +38,7 @@ const App = () => {
                         <Switch>
                             <Route exact path='/register' component={Register} />
                             <Route exact path='/login' component={Login} />
+                            <PrivateRoute exact path='/dashboard' component={Dashboard} />
                         </Switch>
                     </section>
                 </Fragment>
