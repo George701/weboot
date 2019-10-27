@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST } from '../actions/constants';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST } from '../actions/constants';
 
 const initialState = {
     posts: [],
@@ -17,12 +17,19 @@ export default (state = initialState, action) => {
                 posts: payload,
                 loading: false
             };
+        case GET_POST:
+            return {
+                ...state,
+                post: payload,
+                loading: false
+            };
         case ADD_POST:
             return {
                 ...state,
                 posts: [payload, ...state.posts],
                 loading: false
             }
+        // Delete issue: does not change store!
         case DELETE_POST:
             return {
                 ...state,
